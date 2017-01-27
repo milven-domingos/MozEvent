@@ -1,0 +1,1 @@
+json.partial! "add_events/add_event", add_event: @add_event
