@@ -1,0 +1,413 @@
+  [1m[35m (182.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (160.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFriendlyIdSlugs (20170128112741)
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateFriendlyIdSlugs < ActiveRecord::Migration[4.2] (called from require at bin/rails:4)
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "friendly_id_slugs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "slug" varchar NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" varchar(50), "scope" varchar, "created_at" datetime)[0m
+  [1m[35m (12.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_friendly_id_slugs_on_sluggable_id" ON "friendly_id_slugs" ("sluggable_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs" ("slug", "sluggable_type")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs" ("slug", "sluggable_type", "scope")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_friendly_id_slugs_on_sluggable_type" ON "friendly_id_slugs" ("sluggable_type")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170128112741"]]
+  [1m[35m (115.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAddEvents (20170128113553)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "add_events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome_do_event" varchar, "local_do_evento" varchar, "data_do_evento" date, "hora_do_event" time, "descricao_do_evento" text, "slug" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_add_events_on_slug" ON "add_events" ("slug")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170128113553"]]
+  [1m[35m (137.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-01-28 11:36:28 UTC], ["updated_at", 2017-01-28 11:36:28 UTC]]
+  [1m[35m (137.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_add_events_on_slug' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_add_events_on_slug' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+Started GET "/" for ::1 at 2017-01-28 03:44:09 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AddEventsController#index as HTML
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Development/Documents/projects/MozEvent/app/models/add_event.rb:7: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/add_event.rb:7: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/add_events_controller.rb:7:in `index'
+  Rendering C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.0ms)
+  Rendering C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (1608.1ms)
+Started GET "/" for ::1 at 2017-01-28 03:44:43 -0800
+Processing by AddEventsController#index as HTML
+  Rendering add_events/index.html.erb within layouts/application
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT "add_events".* FROM "add_events"[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_add_events_index_html_erb__383526366_50711660 at C:/Users/Development/Documents/projects/MozEvent/app/views/add_events/index.html.erb:19)
+  Rendered add_events/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 7559ms (Views: 7419.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:48:32 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (276.2ms)
+  Rendered add_events/new.html.erb within layouts/application (304.2ms)
+Completed 200 OK in 722ms (Views: 675.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/add_events" for ::1 at 2017-01-28 03:50:36 -0800
+Processing by AddEventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fTMe0T1jn1rnnURMmN4v0XAX1PIRjJsXvzJtHMvNhsogJlZLC34yeVvykKYUlc9OLLEepWcTuxpQcSWC3JWMvw==", "add_event"=>{"nome_do_event"=>"a festa dos moz", "local_do_evento"=>"matola", "data_do_evento(1i)"=>"2017", "data_do_evento(2i)"=>"1", "data_do_evento(3i)"=>"28", "hora_do_event(1i)"=>"2017", "hora_do_event(2i)"=>"1", "hora_do_event(3i)"=>"28", "hora_do_event(4i)"=>"11", "hora_do_event(5i)"=>"48", "descricao_do_evento"=>"lakjsnssgjanababbkssnss sjskslsls", "slug"=>""}, "commit"=>"Create Add event"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "add_events" ("nome_do_event", "local_do_evento", "data_do_evento", "hora_do_event", "descricao_do_evento", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["nome_do_event", "a festa dos moz"], ["local_do_evento", "matola"], ["data_do_evento", Sat, 28 Jan 2017], ["hora_do_event", 2017-01-28 11:48:00 UTC], ["descricao_do_evento", "lakjsnssgjanababbkssnss sjskslsls"], ["slug", ""], ["created_at", 2017-01-28 11:50:36 UTC], ["updated_at", 2017-01-28 11:50:36 UTC]]
+  [1m[35m (127.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/add_events/1
+Completed 302 Found in 154ms (ActiveRecord: 129.1ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:50:36 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 354ms (Views: 315.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:52:06 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from set_add_event at C:/Users/Development/Documents/projects/MozEvent/app/controllers/add_events_controller.rb:67)
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 351ms (Views: 282.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:52:09 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 287ms (Views: 252.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:52:22 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 320ms (Views: 288.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:52:25 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 297ms (Views: 262.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1" for ::1 at 2017-01-28 03:52:27 -0800
+Processing by AddEventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/show.html.erb within layouts/application
+  Rendered add_events/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 299ms (Views: 263.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events" for ::1 at 2017-01-28 03:53:00 -0800
+Processing by AddEventsController#index as HTML
+  Rendering add_events/index.html.erb within layouts/application
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT "add_events".* FROM "add_events"[0m
+  Rendered add_events/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 306ms (Views: 275.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events" for ::1 at 2017-01-28 03:55:05 -0800
+Processing by AddEventsController#index as HTML
+  Rendering add_events/index.html.erb within layouts/application
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT "add_events".* FROM "add_events"[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_add_events_index_html_erb__383526366_125561200 at C:/Users/Development/Documents/projects/MozEvent/app/views/add_events/index.html.erb:19)
+  Rendered add_events/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 325ms (Views: 286.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events" for ::1 at 2017-01-28 03:55:08 -0800
+Processing by AddEventsController#index as HTML
+  Rendering add_events/index.html.erb within layouts/application
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT "add_events".* FROM "add_events"[0m
+  Rendered add_events/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 323ms (Views: 293.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1/edit" for ::1 at 2017-01-28 03:55:11 -0800
+Processing by AddEventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/edit.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (16.0ms)
+  Rendered add_events/edit.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 358ms (Views: 323.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/1/edit" for ::1 at 2017-01-28 03:55:11 -0800
+Processing by AddEventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/edit.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (13.0ms)
+  Rendered add_events/edit.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 358ms (Views: 322.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1/edit" for ::1 at 2017-01-28 03:55:15 -0800
+Processing by AddEventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/edit.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (14.0ms)
+  Rendered add_events/edit.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 338ms (Views: 303.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/add_events/1/edit" for ::1 at 2017-01-28 03:55:29 -0800
+Processing by AddEventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from set_add_event at C:/Users/Development/Documents/projects/MozEvent/app/controllers/add_events_controller.rb:67)
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."slug" = ? ORDER BY "add_events"."id" ASC LIMIT ?[0m  [["slug", "1"], ["LIMIT", 1]]
+  [1m[36mAddEvent Load (1.0ms)[0m  [1m[34mSELECT  "add_events".* FROM "add_events" WHERE "add_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering add_events/edit.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (17.0ms)
+  Rendered add_events/edit.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 386ms (Views: 324.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for ::1 at 2017-01-28 03:55:35 -0800
+Processing by AddEventsController#index as HTML
+  Rendering add_events/index.html.erb within layouts/application
+  [1m[36mAddEvent Load (0.0ms)[0m  [1m[34mSELECT "add_events".* FROM "add_events"[0m
+  Rendered add_events/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 325ms (Views: 290.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:55:41 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (15.0ms)
+  Rendered add_events/new.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 354ms (Views: 325.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:55:41 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (12.0ms)
+  Rendered add_events/new.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 329ms (Views: 299.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:55:55 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (14.0ms)
+  Rendered add_events/new.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 360ms (Views: 327.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:55:57 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (15.0ms)
+  Rendered add_events/new.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 359ms (Views: 330.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:56:09 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (13.0ms)
+  Rendered add_events/new.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 342ms (Views: 314.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 03:56:13 -0800
+Processing by AddEventsController#new as HTML
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (13.0ms)
+  Rendered add_events/new.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 347ms (Views: 312.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/add_events/new" for ::1 at 2017-01-28 04:28:45 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AddEventsController#new as HTML
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from new at C:/Users/Development/Documents/projects/MozEvent/app/controllers/add_events_controller.rb:17)
+  Rendering add_events/new.html.erb within layouts/application
+  Rendered add_events/_form.html.erb (109.1ms)
+  Rendered add_events/new.html.erb within layouts/application (141.1ms)
+Completed 200 OK in 1232ms (Views: 1131.0ms | ActiveRecord: 2.0ms)
+
+
