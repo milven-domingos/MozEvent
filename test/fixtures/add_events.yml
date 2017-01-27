@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_do_event: MyString
+  local_do_evento: MyString
+  data_do_evento: 2017-01-28
+  hora_do_event: 2017-01-28 03:35:53
+  descricao_do_evento: MyText
+  slug: MyString
+
+two:
+  nome_do_event: MyString
+  local_do_evento: MyString
+  data_do_evento: 2017-01-28
+  hora_do_event: 2017-01-28 03:35:53
+  descricao_do_evento: MyText
+  slug: MyString
